@@ -1,0 +1,125 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "homepage.json"
+        fields:
+          - {label: "Available for work?", name: "available", widget: "boolean", default: true}
+          - {label: "Hero Name", name: "hero_name", widget: "string", default: "SAMEER"}
+          - {label: "Hero Role Line", name: "hero_role", widget: "string"}
+          - {label: "Hero Pitch", name: "hero_pitch", widget: "text"}
+          - {label: "Stat 1 Number", name: "stat1_num", widget: "string"}
+          - {label: "Stat 1 Label", name: "stat1_label", widget: "string"}
+          - {label: "Stat 2 Number", name: "stat2_num", widget: "string"}
+          - {label: "Stat 2 Label", name: "stat2_label", widget: "string"}
+          - {label: "Stat 3 Number", name: "stat3_num", widget: "string"}
+          - {label: "Stat 3 Label", name: "stat3_label", widget: "string"}
+          - {label: "Stat 4 Number", name: "stat4_num", widget: "string"}
+          - {label: "Stat 4 Label", name: "stat4_label", widget: "string"}
+          - {label: "About Body 1", name: "about_body1", widget: "text"}
+          - {label: "About Body 2", name: "about_body2", widget: "text"}
+          - {label: "About Body 3", name: "about_body3", widget: "text"}
+          - {label: "Contact Email", name: "contact_email", widget: "string"}
+          - {label: "LinkedIn URL", name: "linkedin_url", widget: "string"}
+          - {label: "Instagram URL", name: "instagram_url", widget: "string"}
+
+  - name: "case_studies"
+    label: "Case Studies"
+    folder: "case-studies"
+    create: true
+    slug: "{{slug}}"
+    label_singular: "Case Study"
+    fields:
+      - {label: "Company", name: "company", widget: "string"}
+      - {label: "Industry", name: "industry", widget: "string"}
+      - {label: "Your Role", name: "role", widget: "string"}
+      - {label: "Year(s)", name: "year", widget: "string"}
+      - {label: "Headline", name: "headline", widget: "string"}
+      - {label: "The Problem", name: "problem", widget: "text"}
+      - label: "What You Did"
+        name: "what_i_did"
+        widget: "list"
+        field: {label: "Action", name: "action", widget: "string"}
+      - {label: "Metric 1 Number", name: "metric1_num", widget: "string"}
+      - {label: "Metric 1 Label", name: "metric1_label", widget: "string"}
+      - {label: "Metric 2 Number", name: "metric2_num", widget: "string"}
+      - {label: "Metric 2 Label", name: "metric2_label", widget: "string"}
+      - {label: "Metric 3 Number", name: "metric3_num", widget: "string"}
+      - {label: "Metric 3 Label", name: "metric3_label", widget: "string"}
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        options:
+          - {label: "Growth Strategy", value: "growth"}
+          - {label: "Paid Media", value: "paid"}
+          - {label: "Brand & Creative", value: "brand"}
+          - {label: "Team & Ops", value: "team"}
+          - {label: "Revenue Models", value: "revenue"}
+
+  - name: "experience"
+    label: "Experience"
+    files:
+      - name: "experience"
+        label: "Work Experience"
+        file: "experience.json"
+        fields:
+          - label: "Jobs"
+            name: "jobs"
+            widget: "list"
+            fields:
+              - {label: "Period", name: "period", widget: "string"}
+              - {label: "Company", name: "company", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+  - name: "testimonials"
+    label: "Testimonials"
+    files:
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role & Company", name: "role", widget: "string"}
+
+  - name: "creative"
+    label: "Creative"
+    files:
+      - name: "videos"
+        label: "Videos"
+        file: "videos.json"
+        fields:
+          - label: "Videos"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "URL (YouTube/Vimeo)", name: "url", widget: "string"}
+              - {label: "Featured?", name: "featured", widget: "boolean", default: false}
+      - name: "designs"
+        label: "Designs"
+        file: "designs.json"
+        fields:
+          - label: "Designs"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Image", name: "image", widget: "image"}
