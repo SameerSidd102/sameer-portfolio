@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup Guide — Sameer's Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f8f7f4;color:#1a1a1a;font-size:16px;line-height:1.7;padding:3rem 2rem;max-width:760px;margin:0 auto}
+h1{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.03em;margin-bottom:.3rem}
+.subtitle{font-size:1rem;color:#666;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid #e0ddd8}
+.step{background:#fff;border:1px solid #e0ddd8;border-radius:8px;padding:2rem;margin-bottom:1.5rem;position:relative}
+.step-num{position:absolute;top:-14px;left:1.5rem;background:#c8ff00;color:#000;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;padding:.2rem .9rem;border-radius:100px}
+.step h2{font-size:1.2rem;font-weight:500;margin-bottom:.75rem;margin-top:.25rem}
+.step p{font-size:.9rem;color:#444;margin-bottom:.75rem}
+.step p:last-child{margin-bottom:0}
+.link{display:inline-flex;align-items:center;gap:.4rem;background:#080808;color:#c8ff00;padding:.5rem 1.2rem;border-radius:4px;text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:.5rem}
+.img-note{background:#f0f8e8;border:1px solid #c8ff00;border-radius:4px;padding:.75rem 1rem;font-size:.82rem;color:#1a4a00;margin-top:.75rem}
+.warn{background:#fff8e8;border:1px solid #ffb800;border-radius:4px;padding:.75rem 1rem;font-size:.82rem;color:#5a3a00;margin-top:.75rem}
+code{background:#f0eeea;padding:.15rem .4rem;border-radius:3px;font-family:monospace;font-size:.85em;color:#c0392b}
+ul{padding-left:1.2rem;margin:.5rem 0}
+ul li{font-size:.9rem;color:#444;margin-bottom:.3rem}
+.done-box{background:#080808;color:#f4f1ec;border-radius:8px;padding:2rem;margin-top:2rem;text-align:center}
+.done-box h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.03em;color:#c8ff00;margin-bottom:.5rem}
+.done-box p{font-size:.9rem;color:rgba(244,241,236,.65)}
+.sep{height:1px;background:#e0ddd8;margin:2rem 0}
+</style>
+</head>
+<body>
+
+<h1>SETUP GUIDE</h1>
+<p class="subtitle">How to get your portfolio live with a free admin panel — no code, ever. Should take about 20 minutes.</p>
+
+<!-- STEP 1 -->
+<div class="step">
+  <span class="step-num">STEP 1</span>
+  <h2>Create a free GitHub account</h2>
+  <p>GitHub stores your website files (like a USB stick in the cloud). You'll never actually use GitHub again after setup — it just sits in the background.</p>
+  <ul>
+    <li>Go to <strong>github.com</strong></li>
+    <li>Click <strong>Sign up</strong></li>
+    <li>Use any email — it's completely free</li>
+    <li>Verify your email when they send you a code</li>
+  </ul>
+  <a class="link" href="https://github.com/signup" target="_blank">→ Create GitHub account</a>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <span class="step-num">STEP 2</span>
+  <h2>Create a free Netlify account</h2>
+  <p>Netlify hosts your website and gives you the admin login panel. Also completely free.</p>
+  <ul>
+    <li>Go to <strong>netlify.com</strong></li>
+    <li>Click <strong>Sign up</strong></li>
+    <li>Choose <strong>"Sign up with GitHub"</strong> — this links the two accounts automatically</li>
+    <li>Authorise the connection when it asks</li>
+  </ul>
+  <a class="link" href="https://app.netlify.com/signup" target="_blank">→ Create Netlify account</a>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <span class="step-num">STEP 3</span>
+  <h2>Upload your portfolio folder to GitHub</h2>
+  <p>You downloaded a folder called <code>sameer-portfolio</code> with all your files inside. Now you upload it to GitHub.</p>
+  <ul>
+    <li>In GitHub, click the <strong>+</strong> button (top right) → <strong>New repository</strong></li>
+    <li>Name it: <code>sameer-portfolio</code></li>
+    <li>Make sure it's set to <strong>Public</strong></li>
+    <li>Click <strong>Create repository</strong></li>
+    <li>On the next screen, click <strong>"uploading an existing file"</strong></li>
+    <li>Drag your entire <code>sameer-portfolio</code> folder contents into the box</li>
+    <li>Click <strong>Commit changes</strong></li>
+  </ul>
+  <div class="img-note">💡 Drag the <em>contents</em> of the folder, not the folder itself — so GitHub sees index.html, admin/, _data/, etc. at the top level.</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <span class="step-num">STEP 4</span>
+  <h2>Deploy to Netlify</h2>
+  <p>This makes your site live on the internet with a real URL.</p>
+  <ul>
+    <li>In Netlify, click <strong>Add new site</strong> → <strong>Import an existing project</strong></li>
+    <li>Choose <strong>GitHub</strong></li>
+    <li>Find and select your <code>sameer-portfolio</code> repository</li>
+    <li>Leave all settings as they are — just click <strong>Deploy site</strong></li>
+    <li>Wait about 60 seconds — Netlify gives you a URL like <code>sparkling-unicorn-123.netlify.app</code></li>
+  </ul>
+  <div class="img-note">🎉 Your portfolio is now live! You can rename the URL to something like <code>sameersaeed.netlify.app</code> in Site settings → Domain management.</div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <span class="step-num">STEP 5</span>
+  <h2>Turn on the admin panel (Identity + Git Gateway)</h2>
+  <p>This is what gives you the WordPress-style login. Two toggles to turn on in Netlify.</p>
+  <ul>
+    <li>In Netlify, go to your site → <strong>Site configuration</strong> → <strong>Identity</strong></li>
+    <li>Click <strong>Enable Identity</strong></li>
+    <li>Scroll down to <strong>Services</strong> → click <strong>Enable Git Gateway</strong></li>
+    <li>Go back to <strong>Identity</strong> → <strong>Invite users</strong></li>
+    <li>Invite <strong>your own email address</strong></li>
+    <li>Check your inbox — click the confirmation link</li>
+    <li>Set your password</li>
+  </ul>
+  <div class="warn">⚠️ Important: Under Identity → Registration, set to <strong>Invite only</strong> — so nobody else can log into your admin.</div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <span class="step-num">STEP 6</span>
+  <h2>Log into your admin panel</h2>
+  <p>You're done! Your admin panel lives at:</p>
+  <p><code>https://YOURSITE.netlify.app/admin</code></p>
+  <ul>
+    <li>Go to that URL</li>
+    <li>Log in with the email and password you just set</li>
+    <li>You'll see: Homepage, Case Studies, Experience, Testimonials, Creative</li>
+    <li>Click any section to edit — change text, upload images, add case studies</li>
+    <li>Hit <strong>Publish</strong> — your site updates within 30 seconds</li>
+  </ul>
+  <div class="img-note">📱 Bookmark <code>/admin</code> on your phone too — you can update your site from anywhere.</div>
+</div>
+
+<div class="sep"></div>
+
+<!-- WHAT YOU CAN EDIT -->
+<div class="step">
+  <span class="step-num">WHAT YOU CAN EDIT</span>
+  <h2>Everything — here's what's in the admin</h2>
+  <ul>
+    <li><strong>Homepage</strong> — your name, role, pitch, all 4 stats, about text, email, LinkedIn, Instagram</li>
+    <li><strong>Case Studies</strong> — add/edit/delete any case study. Title, problem, what you did, 3 metrics, tags, colour</li>
+    <li><strong>Experience / CV</strong> — add/reorder/edit every job on the timeline</li>
+    <li><strong>Testimonials</strong> — swap in your real LinkedIn recommendations</li>
+    <li><strong>Creative → Videos</strong> — paste YouTube/Vimeo links or upload files</li>
+    <li><strong>Creative → Designs</strong> — upload images directly from your device</li>
+  </ul>
+</div>
+
+<div class="done-box">
+  <h2>YOU'RE LIVE.</h2>
+  <p>Free forever. No monthly fees. Edit from your phone. No code required.</p>
+  <p style="margin-top:.5rem;color:rgba(244,241,236,.4);font-size:.78rem">Questions? Come back to Claude and ask.</p>
+</div>
+
+</body>
+</html>

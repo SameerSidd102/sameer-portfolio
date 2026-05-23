@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative — Sameer Saeed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--surface:#111111;--white:#f4f1ec;
+  --muted:rgba(244,241,236,0.52);--faint:rgba(244,241,236,0.07);--faint2:rgba(244,241,236,0.13);
+  --lime:#c8ff00;--coral:#ff4d2e;--blue:#1a6bff;--violet:#9b5cff;--amber:#ffb800;--teal:#00d4a4;
+  --display:'Bebas Neue',sans-serif;--serif:'Playfair Display',serif;--body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:10px;height:10px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .22s,height .22s;mix-blend-mode:difference}
+.cursor.big{width:42px;height:42px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 3rem;background:rgba(8,8,8,.97)}
+.logo{font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;color:var(--white);text-decoration:none}
+.logo span{color:var(--lime)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--lime)}
+.nav-cta{font-size:.78rem;font-weight:500;padding:.6rem 1.4rem;border:1px solid rgba(244,241,236,.3);border-radius:100px;color:var(--white);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--lime);border-color:var(--lime);color:var(--black)}
+
+/* PAGE HEADER */
+.page-header{padding:9rem 3rem 5rem;border-bottom:1px solid var(--faint);position:relative;overflow:hidden}
+.ph-blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.2;pointer-events:none}
+.ph-b1{width:500px;height:500px;background:var(--coral);top:-20%;right:-5%;animation:blob 10s ease-in-out infinite alternate}
+.ph-b2{width:350px;height:350px;background:var(--violet);bottom:-10%;left:-5%;animation:blob 13s ease-in-out infinite alternate-reverse}
+@keyframes blob{to{transform:translate(20px,-15px) scale(1.08)}}
+.ph-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:1.2rem;display:block}
+.ph-hed{font-family:var(--display);font-size:clamp(4rem,10vw,9rem);line-height:.88;letter-spacing:.01em;position:relative;z-index:1}
+.ph-hed em{font-family:var(--serif);font-style:italic;color:var(--lime);font-size:.75em}
+.ph-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:520px;margin-top:2rem;position:relative;z-index:1}
+
+/* TAB BAR */
+.tab-bar{padding:0 3rem;border-bottom:1px solid var(--faint);display:flex;gap:0}
+.tab-btn{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:1.4rem 2rem;border:none;background:transparent;color:var(--muted);cursor:pointer;font-family:var(--body);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .3s,border-color .3s}
+.tab-btn:hover{color:var(--white)}
+.tab-btn.active{color:var(--lime);border-bottom-color:var(--lime)}
+
+/* UPLOAD TOOLBAR */
+.upload-toolbar{padding:2rem 3rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--faint);flex-wrap:wrap}
+.upload-toolbar-label{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:.5rem}
+.upload-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.2rem;border:1px solid var(--faint2);border-radius:4px;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--white);background:transparent;cursor:pointer;font-family:var(--body);transition:all .3s}
+.upload-btn:hover{border-color:var(--lime);color:var(--lime)}
+.upload-btn.primary{background:var(--lime);border-color:var(--lime);color:var(--black)}
+.upload-btn.primary:hover{opacity:.85}
+.url-input-wrap{display:flex;gap:.5rem;align-items:center;margin-left:auto}
+.url-input{background:rgba(244,241,236,.04);border:1px solid var(--faint2);border-radius:4px;padding:.55rem 1rem;color:var(--white);font-family:var(--body);font-size:.8rem;width:280px;outline:none;transition:border-color .3s}
+.url-input:focus{border-color:var(--lime)}
+.url-input::placeholder{color:rgba(244,241,236,.25)}
+
+/* SECTION AREAS */
+.section-area{padding:3rem 3rem 5rem;display:none}
+.section-area.active{display:block}
+
+.section-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem}
+.section-hed{font-family:var(--display);font-size:clamp(2rem,4vw,3.5rem);line-height:.92}
+.section-hed em{font-family:var(--serif);font-style:italic;color:var(--coral)}
+.section-count{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* VIDEO GRID */
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.video-grid.three-col{grid-template-columns:repeat(3,1fr)}
+
+.video-card{border:1px solid var(--faint);border-radius:6px;overflow:hidden;transition:border-color .35s,transform .35s;position:relative}
+.video-card:hover{border-color:var(--faint2);transform:translateY(-2px)}
+.video-card.featured{grid-column:1/-1}
+
+/* Video embed container */
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#0d0d0d}
+.video-embed iframe,.video-embed video{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-card.featured .video-embed{padding-bottom:42%}
+
+/* Upload placeholder */
+.upload-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(244,241,236,.02);border:1.5px dashed rgba(244,241,236,.12);border-radius:4px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.upload-placeholder:hover{border-color:var(--lime);background:rgba(200,255,0,.03)}
+.upload-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.up-icon{font-size:2rem;opacity:.3}
+.up-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.up-sub{font-size:.68rem;color:rgba(244,241,236,.25)}
+
+.video-card-body{padding:1.5rem;background:var(--surface)}
+.vc-cat{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.vc-title{font-family:var(--display);font-size:1.3rem;letter-spacing:.02em;margin-bottom:.4rem}
+.vc-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.vc-edit-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,236,.25);background:transparent;border:none;cursor:pointer;font-family:var(--body);margin-top:.8rem;transition:color .3s;padding:0}
+.vc-edit-btn:hover{color:var(--lime)}
+
+/* DESIGN GRID */
+.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.design-card{border:1px solid var(--faint);border-radius:6px;overflow:hidden;transition:border-color .35s,transform .35s;cursor:pointer}
+.design-card:hover{border-color:var(--faint2);transform:translateY(-2px)}
+.design-card.wide{grid-column:span 2}
+.design-card.tall .design-img{aspect-ratio:3/4}
+.design-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#111}
+.design-placeholder{width:100%;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:rgba(244,241,236,.02);border-bottom:1px solid var(--faint);cursor:pointer;position:relative;transition:background .3s}
+.design-placeholder:hover{background:rgba(200,255,0,.03)}
+.design-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.design-card.wide .design-placeholder{aspect-ratio:2/1}
+.design-card-body{padding:1.2rem;background:var(--surface)}
+.dc-cat{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.dc-title{font-family:var(--display);font-size:1.15rem;letter-spacing:.02em}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,8,.96);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox-inner{max-width:90vw;max-height:90vh;position:relative}
+.lightbox-inner img{max-width:100%;max-height:85vh;object-fit:contain;display:block;border-radius:4px}
+.lightbox-close{position:absolute;top:-2.5rem;right:0;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;font-family:var(--body);transition:color .3s}
+.lightbox-close:hover{color:var(--lime)}
+
+/* EMPTY STATE */
+.empty-state{padding:5rem 3rem;text-align:center;border:1.5px dashed rgba(244,241,236,.08);border-radius:8px;margin:2rem 0}
+.empty-icon{font-size:3rem;opacity:.2;margin-bottom:1rem}
+.empty-label{font-family:var(--display);font-size:1.8rem;letter-spacing:.02em;margin-bottom:.5rem;color:rgba(244,241,236,.3)}
+.empty-sub{font-size:.82rem;color:rgba(244,241,236,.2)}
+
+/* ADD CARD */
+.add-card{border:1.5px dashed rgba(244,241,236,.1);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:3rem 2rem;cursor:pointer;transition:all .3s;background:transparent;font-family:var(--body);color:var(--muted);text-align:center;min-height:200px}
+.add-card:hover{border-color:var(--lime);color:var(--lime);background:rgba(200,255,0,.03)}
+.add-icon{font-size:1.8rem;opacity:.4}
+.add-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(8,8,8,.9);z-index:400;display:none;align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--faint2);border-radius:8px;padding:2.5rem;width:100%;max-width:520px}
+.modal-hed{font-family:var(--display);font-size:2rem;letter-spacing:.02em;margin-bottom:.4rem}
+.modal-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.modal-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.modal-tab{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem 1rem;border:1px solid var(--faint2);border-radius:4px;color:var(--muted);background:transparent;cursor:pointer;font-family:var(--body);transition:all .3s}
+.modal-tab.active{background:var(--lime);border-color:var(--lime);color:var(--black)}
+.modal-section{display:none}
+.modal-section.active{display:block}
+.flbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.35rem}
+.finput{background:rgba(244,241,236,.04);border:1px solid rgba(244,241,236,.1);border-radius:4px;padding:.75rem 1rem;color:var(--white);font-family:var(--body);font-size:.86rem;width:100%;outline:none;transition:border-color .3s;margin-bottom:1rem}
+.finput:focus{border-color:var(--lime)}
+.modal-drop{border:1.5px dashed rgba(244,241,236,.14);border-radius:4px;padding:2.5rem;text-align:center;margin-bottom:1rem;position:relative;cursor:pointer;transition:all .3s}
+.modal-drop:hover{border-color:var(--lime)}
+.modal-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.modal-drop-icon{font-size:2rem;opacity:.3;margin-bottom:.75rem}
+.modal-drop-label{font-size:.78rem;color:var(--muted)}
+.modal-drop-sub{font-size:.65rem;color:rgba(244,241,236,.25);margin-top:.3rem}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem}
+.modal-cancel{padding:.7rem 1.5rem;border:1px solid var(--faint2);border-radius:4px;font-family:var(--body);font-size:.75rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:transparent;cursor:pointer;transition:all .3s}
+.modal-cancel:hover{border-color:var(--muted)}
+.modal-submit{padding:.7rem 1.5rem;background:var(--lime);border:none;border-radius:4px;font-family:var(--body);font-size:.75rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--black);cursor:pointer;transition:opacity .3s}
+.modal-submit:hover{opacity:.85}
+
+/* SHARED */
+.stag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,236,.32);display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem}
+.stag::before{content:'';width:34px;height:1px;background:var(--coral);flex-shrink:0}
+
+footer{border-top:1px solid var(--faint);padding:2.2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.foot-logo{font-family:var(--display);font-size:1.2rem;letter-spacing:.04em}
+.foot-logo span{color:var(--lime)}
+.foot-copy{font-size:.66rem;color:rgba(244,241,236,.2);letter-spacing:.06em}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,236,.25);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:var(--lime)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="index.html" class="logo">SAMEER<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="creative.html" class="active">Creative</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Hire me →</a>
+</nav>
+
+<div class="page-header">
+  <div class="ph-blob ph-b1"></div>
+  <div class="ph-blob ph-b2"></div>
+  <span class="ph-tag">● Cinematography · Design · Motion · Brand</span>
+  <h1 class="ph-hed">CREATIVE<br><em>work.</em></h1>
+  <p class="ph-sub">The other half of what I do. Strategy and creative direction aren't separate disciplines — every campaign I run, I can also shoot, design and direct.</p>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('video',this)">🎬 Cinematography & Video</button>
+  <button class="tab-btn" onclick="switchTab('design',this)">🎨 Design & Branding</button>
+</div>
+
+<!-- UPLOAD TOOLBAR -->
+<div class="upload-toolbar">
+  <span class="upload-toolbar-label">Add work:</span>
+  <button class="upload-btn primary" onclick="openModal()">+ Upload File</button>
+  <div class="url-input-wrap">
+    <input class="url-input" id="url-input" type="text" placeholder="Paste YouTube / Vimeo / video URL and press Enter">
+    <button class="upload-btn" onclick="addFromURL()">Add Link →</button>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<div class="section-area active" id="tab-video">
+  <div class="section-intro reveal">
+    <div>
+      <p class="stag">(01) Cinematography & Video</p>
+      <h2 class="section-hed">FRAMES THAT<br><em>move</em> PEOPLE.</h2>
+    </div>
+    <span class="section-count" id="video-count">Add your first video below</span>
+  </div>
+
+  <!-- PLACEHOLDER FEATURED -->
+  <div class="video-grid" id="video-grid">
+
+    <div class="video-card featured reveal" id="placeholder-featured">
+      <div class="upload-placeholder" style="aspect-ratio:21/9" onclick="openModal()">
+        <input type="file" accept="video/*" onchange="handleVideoFile(this)">
+        <div class="up-icon">▶</div>
+        <div class="up-label">Add Your Showreel</div>
+        <div class="up-sub">Upload a video file or paste a YouTube / Vimeo link above</div>
+      </div>
+      <div class="video-card-body">
+        <p class="vc-cat">Showreel · Featured</p>
+        <p class="vc-title">YOUR SHOWREEL</p>
+        <p class="vc-desc">Upload your best work here — this card spans the full width and plays first.</p>
+      </div>
+    </div>
+
+    <div class="video-card reveal" id="placeholder-1">
+      <div class="upload-placeholder" onclick="openModal()">
+        <input type="file" accept="video/*" onchange="handleVideoFile(this)">
+        <div class="up-icon">🎬</div>
+        <div class="up-label">Add Video</div>
+        <div class="up-sub">MP4, MOV, or paste a link</div>
+      </div>
+      <div class="video-card-body">
+        <p class="vc-cat">Campaign · Brand Film</p>
+        <p class="vc-title">PROJECT TITLE</p>
+        <p class="vc-desc">Replace with your project description — client, brief, your role.</p>
+      </div>
+    </div>
+
+    <div class="video-card reveal" id="placeholder-2">
+      <div class="upload-placeholder" onclick="openModal()">
+        <input type="file" accept="video/*" onchange="handleVideoFile(this)">
+        <div class="up-icon">🎬</div>
+        <div class="up-label">Add Video</div>
+        <div class="up-sub">MP4, MOV, or paste a link</div>
+      </div>
+      <div class="video-card-body">
+        <p class="vc-cat">Social · Vertical</p>
+        <p class="vc-title">PROJECT TITLE</p>
+        <p class="vc-desc">Replace with your project description — client, brief, your role.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- add more video button -->
+  <div style="margin-top:1.5rem">
+    <button class="add-card" onclick="openModal()" style="width:100%;flex-direction:row;padding:1.5rem 2rem;min-height:auto;justify-content:center">
+      <span class="add-icon" style="font-size:1.2rem">+</span>
+      <span class="add-label">Add Another Video</span>
+    </button>
+  </div>
+</div>
+
+<!-- DESIGN SECTION -->
+<div class="section-area" id="tab-design">
+  <div class="section-intro reveal">
+    <div>
+      <p class="stag">(02) Design & Branding</p>
+      <h2 class="section-hed">VISUAL SYSTEMS<br><em>that</em> STICK.</h2>
+    </div>
+    <span class="section-count" id="design-count">Add your first design below</span>
+  </div>
+
+  <div class="design-grid" id="design-grid">
+
+    <!-- Placeholder wide -->
+    <div class="design-card wide reveal" id="d-placeholder-1">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-1').click()">
+        <input type="file" id="design-file-1" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-1')">
+        <div class="up-icon">🎨</div>
+        <div class="up-label">Add Featured Design</div>
+        <div class="up-sub">PNG, JPG, GIF — this card spans two columns</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Brand Identity · Featured</p>
+        <p class="dc-title">YOUR BEST BRAND WORK</p>
+      </div>
+    </div>
+
+    <div class="design-card reveal" id="d-placeholder-2">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-2').click()">
+        <input type="file" id="design-file-2" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-2')">
+        <div class="up-icon">+</div>
+        <div class="up-label">Add Design</div>
+        <div class="up-sub">PNG, JPG, GIF</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Social Creative</p>
+        <p class="dc-title">PROJECT TITLE</p>
+      </div>
+    </div>
+
+    <div class="design-card reveal" id="d-placeholder-3">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-3').click()">
+        <input type="file" id="design-file-3" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-3')">
+        <div class="up-icon">+</div>
+        <div class="up-label">Add Design</div>
+        <div class="up-sub">PNG, JPG, GIF</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Motion & Visual</p>
+        <p class="dc-title">PROJECT TITLE</p>
+      </div>
+    </div>
+
+    <div class="design-card reveal" id="d-placeholder-4">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-4').click()">
+        <input type="file" id="design-file-4" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-4')">
+        <div class="up-icon">+</div>
+        <div class="up-label">Add Design</div>
+        <div class="up-sub">PNG, JPG, GIF</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Brand & Identity</p>
+        <p class="dc-title">PROJECT TITLE</p>
+      </div>
+    </div>
+
+    <div class="design-card reveal" id="d-placeholder-5">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-5').click()">
+        <input type="file" id="design-file-5" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-5')">
+        <div class="up-icon">+</div>
+        <div class="up-label">Add Design</div>
+        <div class="up-sub">PNG, JPG, GIF</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Campaign Visual</p>
+        <p class="dc-title">PROJECT TITLE</p>
+      </div>
+    </div>
+
+    <div class="design-card reveal" id="d-placeholder-6">
+      <div class="design-placeholder" onclick="document.getElementById('design-file-6').click()">
+        <input type="file" id="design-file-6" accept="image/*" style="display:none" onchange="handleDesignFile(this,'d-placeholder-6')">
+        <div class="up-icon">+</div>
+        <div class="up-label">Add Design</div>
+        <div class="up-sub">PNG, JPG, GIF</div>
+      </div>
+      <div class="design-card-body">
+        <p class="dc-cat">Web & Digital</p>
+        <p class="dc-title">PROJECT TITLE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <button class="add-card" id="add-design-btn" onclick="addDesignCard()" style="width:100%;flex-direction:row;padding:1.5rem 2rem;min-height:auto;justify-content:center">
+      <span class="add-icon" style="font-size:1.2rem">+</span>
+      <span class="add-label">Add Another Design</span>
+    </button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕ Close</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+</div>
+
+<!-- ADD MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2 class="modal-hed">ADD CREATIVE WORK</h2>
+    <p class="modal-sub">Upload a file directly or paste a video URL (YouTube, Vimeo, or direct .mp4 link).</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchModalTab('upload',this)">Upload File</button>
+      <button class="modal-tab" onclick="switchModalTab('url',this)">Video URL</button>
+    </div>
+
+    <!-- Upload tab -->
+    <div class="modal-section active" id="modal-upload">
+      <div class="modal-drop" onclick="document.getElementById('modal-file').click()">
+        <input type="file" id="modal-file" accept="image/*,video/*" onchange="handleModalFile(this)" style="display:none">
+        <div class="modal-drop-icon">📁</div>
+        <div class="modal-drop-label">Click to choose a file</div>
+        <div class="modal-drop-sub">Video: MP4, MOV, WebM · Image: JPG, PNG, GIF, WebP</div>
+      </div>
+      <label class="flbl">Title</label>
+      <input class="finput" id="modal-title-upload" type="text" placeholder="e.g. Brand Launch Film — Maison Blanc">
+      <label class="flbl">Category</label>
+      <input class="finput" id="modal-cat-upload" type="text" placeholder="e.g. Campaign · Brand Film">
+      <label class="flbl">Description (optional)</label>
+      <input class="finput" id="modal-desc-upload" type="text" placeholder="Client, brief, your role...">
+    </div>
+
+    <!-- URL tab -->
+    <div class="modal-section" id="modal-url">
+      <label class="flbl">Video URL</label>
+      <input class="finput" id="modal-url-input" type="text" placeholder="https://youtube.com/watch?v=... or https://vimeo.com/...">
+      <label class="flbl">Title</label>
+      <input class="finput" id="modal-title-url" type="text" placeholder="e.g. Showreel 2025">
+      <label class="flbl">Category</label>
+      <input class="finput" id="modal-cat-url" type="text" placeholder="e.g. Showreel · Cinematography">
+      <label class="flbl">Description (optional)</label>
+      <input class="finput" id="modal-desc-url" type="text" placeholder="Client, brief, your role...">
+    </div>
+
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-submit" onclick="submitModal()">Add to Portfolio →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-logo">SAMEER<span>.</span></div>
+  <span class="foot-copy">© 2025 Sameer Saeed — Open to opportunities</span>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+document.querySelectorAll('a,button,.design-card,.video-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Tabs
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section-area').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// Modal
+let modalMode = 'upload';
+let modalFileData = null;
+let modalFileType = null;
+
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); modalFileData = null; }
+
+function switchModalTab(tab, btn) {
+  modalMode = tab;
+  document.querySelectorAll('.modal-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.modal-section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('modal-' + tab).classList.add('active');
+}
+
+function handleModalFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    modalFileData = e.target.result;
+    modalFileType = file.type.startsWith('video') ? 'video' : 'image';
+    document.querySelector('#modal-upload .modal-drop-label').textContent = '✓ ' + file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitModal() {
+  if (modalMode === 'upload' && modalFileData) {
+    const title = document.getElementById('modal-title-upload').value || 'Untitled';
+    const cat = document.getElementById('modal-cat-upload').value || 'Creative';
+    const desc = document.getElementById('modal-desc-upload').value || '';
+    if (modalFileType === 'video') addVideoCard(null, modalFileData, title, cat, desc, 'file');
+    else addDesignCardWithData(modalFileData, title, cat);
+    closeModal();
+  } else if (modalMode === 'url') {
+    const url = document.getElementById('modal-url-input').value.trim();
+    const title = document.getElementById('modal-title-url').value || 'Untitled';
+    const cat = document.getElementById('modal-cat-url').value || 'Video';
+    const desc = document.getElementById('modal-desc-url').value || '';
+    if (url) { addVideoCard(url, null, title, cat, desc, 'url'); closeModal(); }
+  }
+}
+
+// URL input in toolbar
+function addFromURL() {
+  const url = document.getElementById('url-input').value.trim();
+  if (!url) return;
+  addVideoCard(url, null, 'New Video', 'Cinematography', '', 'url');
+  document.getElementById('url-input').value = '';
+}
+document.getElementById('url-input').addEventListener('keydown', e => { if(e.key==='Enter') addFromURL(); });
+
+// Convert URL to embed
+function getEmbedURL(url) {
+  // YouTube
+  let yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  if (yt) return { type:'iframe', src:'https://www.youtube.com/embed/'+yt[1]+'?rel=0' };
+  // Vimeo
+  let vi = url.match(/vimeo\.com\/(\d+)/);
+  if (vi) return { type:'iframe', src:'https://player.vimeo.com/video/'+vi[1] };
+  // Direct video file
+  if (url.match(/\.(mp4|webm|mov)(\?.*)?$/i)) return { type:'video', src:url };
+  return null;
+}
+
+// Add video card
+function addVideoCard(url, fileData, title, cat, desc, sourceType) {
+  // Remove placeholder featured if still default
+  const pf = document.getElementById('placeholder-featured');
+  const p1 = document.getElementById('placeholder-1');
+  const p2 = document.getElementById('placeholder-2');
+
+  const grid = document.getElementById('video-grid');
+  const card = document.createElement('div');
+  card.className = 'video-card reveal on';
+
+  let mediaHTML = '';
+  if (sourceType === 'url' && url) {
+    const embed = getEmbedURL(url);
+    if (embed) {
+      if (embed.type === 'iframe') {
+        mediaHTML = `<div class="video-embed"><iframe src="${embed.src}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>`;
+      } else {
+        mediaHTML = `<div class="video-embed"><video controls><source src="${embed.src}"><p style="padding:1rem;color:var(--muted);font-size:.82rem">Your browser can't play this video.</p></video></div>`;
+      }
+    } else {
+      mediaHTML = `<div class="video-embed" style="background:#111;display:flex;align-items:center;justify-content:center"><p style="color:var(--muted);font-size:.82rem;padding:2rem;text-align:center">Could not embed this URL. Try YouTube, Vimeo, or a direct .mp4 link.</p></div>`;
+    }
+  } else if (fileData) {
+    mediaHTML = `<div class="video-embed"><video controls><source src="${fileData}"></video></div>`;
+  }
+
+  card.innerHTML = `
+    ${mediaHTML}
+    <div class="video-card-body">
+      <p class="vc-cat">${cat}</p>
+      <p class="vc-title">${title}</p>
+      ${desc ? `<p class="vc-desc">${desc}</p>` : ''}
+    </div>`;
+  grid.appendChild(card);
+  updateVideoCount();
+  cur.classList.remove('big');
+  card.addEventListener('mouseenter', () => cur.classList.add('big'));
+  card.addEventListener('mouseleave', () => cur.classList.remove('big'));
+}
+
+function updateVideoCount() {
+  const realCards = document.querySelectorAll('#video-grid .video-card:not([id^=placeholder])').length;
+  document.getElementById('video-count').textContent = realCards + ' video' + (realCards !== 1 ? 's' : '') + ' added';
+}
+
+// Handle file input on placeholder
+function handleVideoFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    addVideoCard(null, e.target.result, file.name.replace(/\.[^.]+$/, ''), 'Video', '', 'file');
+  };
+  reader.readAsDataURL(file);
+}
+
+// Design cards
+let designCount = 6;
+
+function handleDesignFile(input, cardId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const card = document.getElementById(cardId);
+    const placeholder = card.querySelector('.design-placeholder');
+    const img = document.createElement('img');
+    img.className = 'design-img';
+    img.src = e.target.result;
+    img.onclick = () => openLightbox(e.target.result);
+    placeholder.replaceWith(img);
+    updateDesignCount();
+  };
+  reader.readAsDataURL(file);
+}
+
+function addDesignCard() {
+  designCount++;
+  const id = 'd-new-' + designCount;
+  const grid = document.getElementById('design-grid');
+  const addBtn = document.getElementById('add-design-btn');
+  const card = document.createElement('div');
+  card.className = 'design-card reveal on';
+  card.id = id;
+  card.innerHTML = `
+    <div class="design-placeholder" onclick="document.getElementById('df-${designCount}').click()">
+      <input type="file" id="df-${designCount}" accept="image/*" style="display:none" onchange="handleDesignFile(this,'${id}')">
+      <div class="up-icon">+</div>
+      <div class="up-label">Add Design</div>
+      <div class="up-sub">PNG, JPG, GIF</div>
+    </div>
+    <div class="design-card-body">
+      <p class="dc-cat">Creative Work</p>
+      <p class="dc-title">PROJECT TITLE</p>
+    </div>`;
+  grid.insertBefore(card, addBtn);
+  cur.classList.remove('big');
+  card.addEventListener('mouseenter', () => cur.classList.add('big'));
+  card.addEventListener('mouseleave', () => cur.classList.remove('big'));
+}
+
+function addDesignCardWithData(src, title, cat) {
+  designCount++;
+  const id = 'd-new-' + designCount;
+  const grid = document.getElementById('design-grid');
+  const addBtn = document.getElementById('add-design-btn');
+  const card = document.createElement('div');
+  card.className = 'design-card reveal on';
+  card.id = id;
+  card.innerHTML = `
+    <img class="design-img" src="${src}" alt="${title}" onclick="openLightbox('${src}')">
+    <div class="design-card-body">
+      <p class="dc-cat">${cat}</p>
+      <p class="dc-title">${title}</p>
+    </div>`;
+  grid.insertBefore(card, addBtn);
+  updateDesignCount();
+}
+
+function updateDesignCount() {
+  const filled = document.querySelectorAll('#design-grid .design-img').length;
+  document.getElementById('design-count').textContent = filled + ' design' + (filled !== 1 ? 's' : '') + ' added';
+}
+
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeModal(); closeLightbox(); }});
+</script>
+</body>
+</html>

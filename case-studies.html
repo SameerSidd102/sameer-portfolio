@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Sameer Saeed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--surface:#111111;--surface2:#181818;--white:#f4f1ec;
+  --muted:rgba(244,241,236,0.52);--faint:rgba(244,241,236,0.07);--faint2:rgba(244,241,236,0.13);
+  --lime:#c8ff00;--coral:#ff4d2e;--blue:#1a6bff;--violet:#9b5cff;--amber:#ffb800;--teal:#00d4a4;
+  --display:'Bebas Neue',sans-serif;--serif:'Playfair Display',serif;--body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:10px;height:10px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .22s,height .22s;mix-blend-mode:difference}
+.cursor.big{width:42px;height:42px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 3rem;background:rgba(8,8,8,.97)}
+.logo{font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;color:var(--white);text-decoration:none}
+.logo span{color:var(--lime)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--lime)}
+.nav-cta{font-size:.78rem;font-weight:500;padding:.6rem 1.4rem;border:1px solid rgba(244,241,236,.3);border-radius:100px;color:var(--white);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--lime);border-color:var(--lime);color:var(--black)}
+
+/* PAGE HEADER */
+.page-header{padding:9rem 3rem 5rem;border-bottom:1px solid var(--faint);position:relative;overflow:hidden}
+.ph-blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.2;pointer-events:none}
+.ph-b1{width:500px;height:500px;background:var(--blue);top:-20%;right:-5%;animation:blob 10s ease-in-out infinite alternate}
+.ph-b2{width:350px;height:350px;background:var(--violet);bottom:-10%;left:-5%;animation:blob 13s ease-in-out infinite alternate-reverse}
+@keyframes blob{to{transform:translate(20px,-15px) scale(1.08)}}
+.ph-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:1.2rem;display:block}
+.ph-hed{font-family:var(--display);font-size:clamp(4rem,10vw,9rem);line-height:.88;letter-spacing:.01em;position:relative;z-index:1}
+.ph-hed em{font-family:var(--serif);font-style:italic;color:var(--lime);font-size:.75em}
+.ph-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:520px;margin-top:2rem;position:relative;z-index:1}
+
+/* FILTER BAR */
+.filter-bar{padding:2rem 3rem;border-bottom:1px solid var(--faint);display:flex;gap:.6rem;flex-wrap:wrap}
+.filter-btn{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem 1.1rem;border:1px solid var(--faint2);border-radius:100px;color:var(--muted);background:transparent;cursor:pointer;transition:all .3s;font-family:var(--body)}
+.filter-btn:hover,.filter-btn.active{background:var(--lime);border-color:var(--lime);color:var(--black)}
+
+/* CASE STUDY FULL CARDS */
+.cs-list{padding:4rem 3rem;display:flex;flex-direction:column;gap:3rem}
+
+.cs-full{display:grid;grid-template-columns:1fr 1.4fr;border:1px solid var(--faint);border-radius:8px;overflow:hidden;transition:border-color .4s;opacity:0;transform:translateY(24px);transition:border-color .4s,opacity .7s ease,transform .7s ease}
+.cs-full.on{opacity:1;transform:translateY(0)}
+.cs-full:hover{border-color:var(--faint2)}
+.cs-full.hidden{display:none}
+
+.cs-left{position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cs-right{padding:2.8rem;background:var(--surface);display:flex;flex-direction:column;justify-content:space-between}
+
+.cs-top{margin-bottom:1.5rem}
+.cs-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.cs-badge{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;padding:.28rem .8rem;border-radius:100px;border:1px solid var(--faint2);color:var(--muted)}
+.cs-badge.accent{border-color:rgba(200,255,0,.3);color:var(--lime)}
+.cs-co-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.cs-co-name{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cs-co-yr{font-size:.62rem;letter-spacing:.1em;color:rgba(244,241,236,.28)}
+.cs-hed{font-family:var(--display);font-size:1.9rem;letter-spacing:.02em;line-height:.95;margin-bottom:1rem}
+.cs-brief-label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,236,.28);margin-bottom:.5rem}
+.cs-brief{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--faint)}
+
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.8rem}
+.cs-metric{background:rgba(244,241,236,.03);border:1px solid var(--faint);border-radius:4px;padding:.9rem}
+.cs-metric-num{font-family:var(--display);font-size:1.6rem;line-height:1;display:block;margin-bottom:.2rem}
+.cs-metric-lbl{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,236,.35);line-height:1.3}
+
+.cs-what{margin-bottom:1.8rem}
+.cs-what-label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,236,.28);margin-bottom:.6rem}
+.cs-what-list{display:flex;flex-direction:column;gap:.45rem}
+.cs-what-item{display:flex;align-items:flex-start;gap:.7rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.cs-what-dot{width:4px;height:4px;border-radius:50%;margin-top:.55rem;flex-shrink:0}
+
+.cs-bottom{display:flex;align-items:center;justify-content:space-between}
+.cs-tags-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.cs-tag{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;border:1px solid var(--faint);color:rgba(244,241,236,.35)}
+
+/* SHARED */
+.stag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,236,.32);display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem}
+.stag::before{content:'';width:34px;height:1px;background:var(--coral);flex-shrink:0}
+
+/* CTA STRIP */
+.cta-strip{margin:0 3rem 6rem;padding:3.5rem;border:1px solid var(--faint);border-radius:8px;display:flex;justify-content:space-between;align-items:center;background:var(--surface)}
+.cta-strip-hed{font-family:var(--display);font-size:2.5rem;letter-spacing:.02em;line-height:.95}
+.cta-strip-hed em{font-family:var(--serif);font-style:italic;color:var(--lime)}
+.cta-strip-sub{font-size:.88rem;color:var(--muted);margin-top:.5rem;max-width:340px;line-height:1.6}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:var(--lime);border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:opacity .3s}
+.btn-primary:hover{opacity:.85}
+
+footer{border-top:1px solid var(--faint);padding:2.2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.foot-logo{font-family:var(--display);font-size:1.2rem;letter-spacing:.04em}
+.foot-logo span{color:var(--lime)}
+.foot-copy{font-size:.66rem;color:rgba(244,241,236,.2);letter-spacing:.06em}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,236,.25);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:var(--lime)}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="index.html" class="logo">SAMEER<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="case-studies.html" class="active">Case Studies</a></li>
+    <li><a href="creative.html">Creative</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Hire me →</a>
+</nav>
+
+<div class="page-header">
+  <div class="ph-blob ph-b1"></div>
+  <div class="ph-blob ph-b2"></div>
+  <span class="ph-tag">● 6 Case Studies · Real Numbers · Real Outcomes</span>
+  <h1 class="ph-hed">GROWTH SYSTEMS<br><em>that worked.</em></h1>
+  <p class="ph-sub">I build growth systems that compound, not campaigns that spend. Every case study below shows the brief, what I did, and the numbers that came out the other side.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCS('all',this)">All</button>
+  <button class="filter-btn" onclick="filterCS('growth',this)">Growth Strategy</button>
+  <button class="filter-btn" onclick="filterCS('paid',this)">Paid Media</button>
+  <button class="filter-btn" onclick="filterCS('brand',this)">Brand & Creative</button>
+  <button class="filter-btn" onclick="filterCS('team',this)">Team & Ops</button>
+  <button class="filter-btn" onclick="filterCS('revenue',this)">Revenue Models</button>
+</div>
+
+<div class="cs-list" id="cs-list">
+
+  <!-- 1: OLIO -->
+  <div class="cs-full" data-tags="growth paid team" id="cs1">
+    <div class="cs-left" style="background:linear-gradient(135deg,#050e00,#0d2200,#162e00)">
+      <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:.05" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="g1" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0L0 0 0 50" fill="none" stroke="#fff" stroke-width=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#g1)"/></svg>
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:5rem;color:var(--lime);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">OLIO</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,255,0,.4)">Consumer Marketplace</div>
+        <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,255,0,.45)">CPA Reduction</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--lime)">89%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,255,0,.45)">Volume Increase</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--lime)">79%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,255,0,.45)">30-day Churn</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--lime)">35→8%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,255,0,.45)">LTV Growth</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--lime)">3×</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">VP Growth</span>
+          <span class="cs-badge">22-Person Team</span>
+          <span class="cs-badge">2022–2025</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">Olio · Consumer Marketplace</span><span class="cs-co-yr">2022–2025</span></div>
+        <h2 class="cs-hed">FROM PAID-LED TO PRODUCT-LED — AND THE NUMBERS PROVED IT</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">The business was hooked on paid acquisition. CPA was climbing, churn was 35% at 30 days, and LTV was shrinking. The growth function was optimising channel by channel — which meant nobody owned the system. I was brought in to rebuild it.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--lime)"></div>Led the full shift from paid-led to product-led growth across a 22-person function</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--lime)"></div>Rebuilt acquisition, activation and retention as a connected system — not isolated channels</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--lime)"></div>Redesigned onboarding flows to collapse 30-day churn from 35% to 8%</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--lime)"></div>Implemented experimentation cadence and KPI framework across the growth function</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--lime)">89%</span><span class="cs-metric-lbl">CPA Reduction</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--teal)">79%</span><span class="cs-metric-lbl">Acquisition Volume ↑</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--amber)">3×</span><span class="cs-metric-lbl">LTV Growth</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">Product-Led Growth</span><span class="cs-tag">Paid Media</span><span class="cs-tag">Retention</span><span class="cs-tag">Team Leadership</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2: OCL VISION -->
+  <div class="cs-full" data-tags="growth paid revenue" id="cs2">
+    <div class="cs-left" style="background:linear-gradient(135deg,#00101a,#001e30,#002a44)">
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:3.5rem;color:var(--blue);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">OCL<br>VISION</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,107,255,.4);margin-bottom:2rem">Healthcare · Eye Surgery</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(26,107,255,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,107,255,.5)">Wasted Spend Found</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--blue)">£431K</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(26,107,255,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,107,255,.5)">Agency Costs Saved</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--blue)">~£200K</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(26,107,255,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,107,255,.5)">B2B Referral Conversion</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--blue)">77%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">Fractional CMO</span>
+          <span class="cs-badge">Sep 2025–Present</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">OCL Vision · UK's Leading Eye Surgery Provider</span><span class="cs-co-yr">2025</span></div>
+        <h2 class="cs-hed">£431K WASTED. ACQUISITION MODEL BROKEN. I FIXED BOTH.</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">OCL Vision was spending £431k on unprofitable campaigns and optimising for lead volume rather than revenue — generating activity without commercial outcomes. The marketing team lacked a commercial visibility model and the agency roster was unaccountable.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--blue)"></div>Rebuilt the acquisition model around CPA and ROAS-based decision making</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--blue)"></div>Ran a structured 13-agency RFP — saving ~£200k in annual agency costs</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--blue)"></div>Built the first full-funnel commercial visibility model connecting spend to revenue, margin and enterprise value</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--blue)"></div>Identified B2B professional referrals as highest-converting channel (77%) and launched a structured B2B programme</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--blue)"></div>Secured board approval for FY26 growth strategy</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--blue)">£431K</span><span class="cs-metric-lbl">Wasted Spend Identified</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--teal)">£200K</span><span class="cs-metric-lbl">Annual Saving</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--amber)">77%</span><span class="cs-metric-lbl">B2B Referral CVR</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">Growth Strategy</span><span class="cs-tag">Paid Media</span><span class="cs-tag">Commercial Model</span><span class="cs-tag">B2B</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3: THE GUARDIAN -->
+  <div class="cs-full" data-tags="revenue growth brand" id="cs3">
+    <div class="cs-left" style="background:linear-gradient(135deg,#1a0800,#2e1200,#3d1900)">
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:3rem;color:var(--amber);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">THE<br>GUARDIAN</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,184,0,.4);margin-bottom:2rem">Media · Reader Revenue</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(255,184,0,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,184,0,.5)">Year One Revenue</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--amber)">£16M</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(255,184,0,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,184,0,.5)">Starting Point</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--amber)">Zero</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(255,184,0,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,184,0,.5)">Operating Loss Context</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--amber)">£57M→0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">Growth & Reader Revenue</span>
+          <span class="cs-badge">Media & Publishing</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">The Guardian · Global News Media</span></div>
+        <h2 class="cs-hed">£16M FROM ZERO. NEW REVENUE MODEL BUILT IN YEAR ONE.</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">The Guardian was operating with a £57m annual loss and needed to find sustainable revenue that didn't compromise editorial independence. Reader contributions were untested and the path from zero to meaningful income was unclear.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--amber)"></div>Built the Contributions revenue model from zero — architecture, proposition and growth strategy</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--amber)"></div>Generated £16m in year one from a brand-new income stream</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--amber)"></div>Contributed to a wider revenue strategy that moved the business from £57m operating loss toward break-even</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--amber)">£16M</span><span class="cs-metric-lbl">Year One Revenue</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--lime)">£0→£16M</span><span class="cs-metric-lbl">Built From Scratch</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--coral)">£57M</span><span class="cs-metric-lbl">Loss Moved to Break-Even</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">Reader Revenue</span><span class="cs-tag">New Business Model</span><span class="cs-tag">Growth Strategy</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4: B2B REFERRAL -->
+  <div class="cs-full" data-tags="growth revenue paid" id="cs4">
+    <div class="cs-left" style="background:linear-gradient(135deg,#001a14,#003024,#003d2e)">
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:3rem;color:var(--teal);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">B2B<br>REFERRAL<br>PROGRAMME</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,212,164,.4);margin-bottom:2rem">OCL Vision · Channel Development</div>
+        <div style="padding:1.2rem;border:1px solid rgba(0,212,164,.15);border-radius:4px;text-align:center">
+          <div style="font-family:var(--display);font-size:4rem;color:var(--teal);line-height:1">77%</div>
+          <div style="font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,212,164,.5);margin-top:.3rem">Conversion Rate — Highest in Business</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">Channel Strategy</span>
+          <span class="cs-badge">OCL Vision</span>
+          <span class="cs-badge">2025</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">OCL Vision · B2B Growth Programme</span></div>
+        <h2 class="cs-hed">FOUND THE HIGHEST-CONVERTING CHANNEL. BUILT IT FROM NOTHING.</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">OCL Vision's acquisition model was entirely B2C — expensive paid channels with mediocre conversion. Analysis revealed an untapped B2B opportunity: professional referrals converting at nearly 8× the rate of paid search, with zero infrastructure to capture it.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--teal)"></div>Identified B2B professional referrals as highest-converting channel (~77% CVR)</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--teal)"></div>Designed and launched a structured B2B growth programme from scratch</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--teal)"></div>Repositioned acquisition strategy toward higher-value procedures (RLE, ICL, cataract)</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--teal)"></div>Improved blended revenue per patient by shifting the procedure mix</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--teal)">77%</span><span class="cs-metric-lbl">B2B Referral CVR</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--lime)">↑ RPP</span><span class="cs-metric-lbl">Revenue Per Patient</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--blue)">0→Live</span><span class="cs-metric-lbl">Programme Built</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">B2B Growth</span><span class="cs-tag">Channel Strategy</span><span class="cs-tag">Revenue Mix</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5: ELDER -->
+  <div class="cs-full" data-tags="growth brand" id="cs5">
+    <div class="cs-left" style="background:linear-gradient(135deg,#0d001a,#1a0035,#220048)">
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:4.5rem;color:var(--violet);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">ELDER</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(155,92,255,.4);margin-bottom:1.5rem">Premium Care Services</div>
+        <div style="font-size:.82rem;color:rgba(155,92,255,.6);line-height:1.6;padding:1rem;border:1px solid rgba(155,92,255,.12);border-radius:4px;text-align:left">High-consideration market. Long customer journey. Complex economics. Standard growth playbooks don't apply.</div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">Growth Lead</span>
+          <span class="cs-badge">Healthcare</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">Elder · Premium Care Marketplace</span></div>
+        <h2 class="cs-hed">GROWTH STRATEGY FOR A MARKET WHERE PAID ALONE NEVER WORKS</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">Elder operates in premium care — a market where families make decisions over weeks or months, emotional stakes are high, and standard DTC paid acquisition models fall apart. Growth needed to be built around trust, nurture and retention, not just top-of-funnel volume.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--violet)"></div>Built a full-funnel growth strategy suited to a long, high-consideration customer journey</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--violet)"></div>Designed acquisition, nurture and retention systems as connected — not siloed</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--violet)"></div>Shifted growth model from volume-led acquisition to sustainable LTV-focused growth</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--violet)"></div>Worked across product, data and marketing to align commercial incentives</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--violet)">↑ LTV</span><span class="cs-metric-lbl">Retention-Driven Growth</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--lime)">↓ CAC</span><span class="cs-metric-lbl">Sustainable Acquisition</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--blue)">Full-Funnel</span><span class="cs-metric-lbl">Integrated System</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">High-Consideration</span><span class="cs-tag">Full-Funnel</span><span class="cs-tag">Retention</span><span class="cs-tag">Healthcare</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6: TEAM & INFRASTRUCTURE -->
+  <div class="cs-full" data-tags="team growth" id="cs6">
+    <div class="cs-left" style="background:linear-gradient(135deg,#1a0800,#2e1400,#3d1c00)">
+      <div style="text-align:center;position:relative;z-index:1;padding:2rem">
+        <div style="font-family:var(--display);font-size:3rem;color:var(--coral);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">GROWTH<br>INFRA&shy;STRUCTURE</div>
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,77,46,.4);margin-bottom:2rem">Team & Ops · Multiple Co's</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(255,77,46,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,77,46,.5)">Team Led</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--coral)">22</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border:1px solid rgba(255,77,46,.15);border-radius:4px">
+            <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,77,46,.5)">Agencies RFP'd</span>
+            <span style="font-family:var(--display);font-size:1.8rem;color:var(--coral)">13</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-top">
+        <div class="cs-badges">
+          <span class="cs-badge accent">Team Building</span>
+          <span class="cs-badge">Olio + OCL Vision</span>
+        </div>
+        <div class="cs-co-row"><span class="cs-co-name">Multiple Companies · Growth Infrastructure</span></div>
+        <h2 class="cs-hed">REPLACED ACTIVITY CULTURE WITH MEASURABLE GROWTH INFRASTRUCTURE</h2>
+        <p class="cs-brief-label">The Problem</p>
+        <p class="cs-brief">At both Olio and OCL Vision, I inherited marketing functions that confused activity with outcomes. Busy teams, unclear ownership, no experimentation cadence, and no way for leadership to connect marketing spend to commercial results.</p>
+      </div>
+      <div>
+        <div class="cs-what">
+          <p class="cs-what-label">What I Did</p>
+          <div class="cs-what-list">
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--coral)"></div>Built and led a 22-person cross-functional growth team at Olio spanning paid, product, data and CRM</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--coral)"></div>Restructured OCL Vision's marketing team, defined roles and built the hiring roadmap</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--coral)"></div>Implemented structured experimentation and KPI cadence at both organisations</div>
+            <div class="cs-what-item"><div class="cs-what-dot" style="background:var(--coral)"></div>Secured board approval for FY26 growth strategy at OCL Vision</div>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--coral)">22</span><span class="cs-metric-lbl">People Led</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--lime)">13</span><span class="cs-metric-lbl">Agency RFP Managed</span></div>
+          <div class="cs-metric"><span class="cs-metric-num" style="color:var(--blue)">Board</span><span class="cs-metric-lbl">Strategy Approved</span></div>
+        </div>
+      </div>
+      <div class="cs-bottom">
+        <div class="cs-tags-row"><span class="cs-tag">Team Leadership</span><span class="cs-tag">Org Design</span><span class="cs-tag">Experimentation</span><span class="cs-tag">KPI Frameworks</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-strip">
+  <div>
+    <h2 class="cta-strip-hed">WANT TO SEE THIS<br>THINKING <em>applied to yours?</em></h2>
+    <p class="cta-strip-sub">I'm open to Head of Growth, VP Growth, CMO and fractional roles. Let's talk about what you're trying to build.</p>
+  </div>
+  <a href="index.html#contact" class="btn-primary">Get In Touch →</a>
+</div>
+
+<footer>
+  <div class="foot-logo">SAMEER<span>.</span></div>
+  <span class="foot-copy">© 2025 Sameer Saeed — Open to opportunities</span>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="creative.html">Creative</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+document.querySelectorAll('a,button,.cs-full').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.cs-full').forEach(el => obs.observe(el));
+
+// Filter
+function filterCS(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cs-full').forEach(card => {
+    if (tag === 'all' || card.dataset.tags.includes(tag)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
