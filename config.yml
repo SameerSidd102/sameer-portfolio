@@ -1,0 +1,320 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+
+  # ─── HOMEPAGE ────────────────────────────────────────────────
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "_data/homepage.json"
+        fields:
+          - label: "Available for work? (shows green dot)"
+            name: "available"
+            widget: "boolean"
+            default: true
+
+          - label: "Hero — Your Name"
+            name: "hero_name"
+            widget: "string"
+            default: "SAMEER"
+
+          - label: "Hero — Italic Subtitle"
+            name: "hero_italic"
+            widget: "string"
+            default: "Saeed"
+
+          - label: "Hero — Role Line"
+            name: "hero_role"
+            widget: "string"
+            default: "HEAD OF SOCIAL & DIGITAL · GROWTH SYSTEMS LEADER"
+
+          - label: "Hero — Pitch (main description)"
+            name: "hero_pitch"
+            widget: "text"
+            default: "I don't build campaigns. I build growth systems that compound. Over 15 years across consumer businesses — Olio, OCL Vision, the Guardian — I've rebuilt growth models from the inside out."
+
+          - label: "Stat 1 — Number"
+            name: "stat1_num"
+            widget: "string"
+            default: "15+"
+
+          - label: "Stat 1 — Label"
+            name: "stat1_label"
+            widget: "string"
+            default: "Years Experience"
+
+          - label: "Stat 2 — Number"
+            name: "stat2_num"
+            widget: "string"
+            default: "89%"
+
+          - label: "Stat 2 — Label"
+            name: "stat2_label"
+            widget: "string"
+            default: "CPA Reduction (Olio)"
+
+          - label: "Stat 3 — Number"
+            name: "stat3_num"
+            widget: "string"
+            default: "£16M"
+
+          - label: "Stat 3 — Label"
+            name: "stat3_label"
+            widget: "string"
+            default: "Revenue Built (Guardian)"
+
+          - label: "Stat 4 — Number"
+            name: "stat4_num"
+            widget: "string"
+            default: "22"
+
+          - label: "Stat 4 — Label"
+            name: "stat4_label"
+            widget: "string"
+            default: "Team Led"
+
+          - label: "About — Headline line 1"
+            name: "about_hed1"
+            widget: "string"
+            default: "GROWTH AS A SYSTEM,"
+
+          - label: "About — Headline italic"
+            name: "about_italic"
+            widget: "string"
+            default: "not a channel."
+
+          - label: "About — Body paragraph 1"
+            name: "about_body1"
+            widget: "text"
+            default: "I build growth systems that compound, not campaigns that spend. Over 15 years, I've led growth at consumer businesses where the economics are complex and paid acquisition alone won't get you there."
+
+          - label: "About — Body paragraph 2"
+            name: "about_body2"
+            widget: "text"
+            default: "Marketplace dynamics at Olio, high-consideration healthcare at OCL Vision, reader revenue at the Guardian, premium care at Elder. Acquisition, activation, retention and monetisation are connected levers. Optimising one in isolation usually breaks another."
+
+          - label: "About — Body paragraph 3"
+            name: "about_body3"
+            widget: "text"
+            default: "I work across product, data, marketing and commercial. I run functions up to 22 people. I'm drawn to businesses at an inflection point — where the growth model needs rebuilding, not just scaling."
+
+          - label: "Contact — Email"
+            name: "contact_email"
+            widget: "string"
+            default: "sameer@youremail.com"
+
+          - label: "Contact — LinkedIn URL"
+            name: "linkedin_url"
+            widget: "string"
+            default: "https://linkedin.com"
+
+          - label: "Contact — Instagram URL"
+            name: "instagram_url"
+            widget: "string"
+            default: "https://instagram.com"
+
+          - label: "Contact — Open to roles (shown in form)"
+            name: "contact_roles"
+            widget: "text"
+            default: "Open to Head of Growth, VP Growth, CMO and fractional leadership roles. I respond personally within 48 hours — no sales funnels, no gatekeepers."
+
+  # ─── CASE STUDIES ────────────────────────────────────────────
+  - name: "case_studies"
+    label: "Case Studies"
+    folder: "_data/case-studies"
+    create: true
+    slug: "{{slug}}"
+    label_singular: "Case Study"
+    fields:
+      - label: "Company Name"
+        name: "company"
+        widget: "string"
+        hint: "e.g. Olio"
+
+      - label: "Industry / Category"
+        name: "industry"
+        widget: "string"
+        hint: "e.g. Consumer Marketplace"
+
+      - label: "Your Role"
+        name: "role"
+        widget: "string"
+        hint: "e.g. VP Growth"
+
+      - label: "Year(s)"
+        name: "year"
+        widget: "string"
+        hint: "e.g. 2022–2025"
+
+      - label: "Case Study Headline"
+        name: "headline"
+        widget: "string"
+        hint: "Bold punchy title — e.g. FROM PAID-LED TO PRODUCT-LED"
+
+      - label: "The Problem (brief)"
+        name: "problem"
+        widget: "text"
+        hint: "1–3 sentences: what was broken before you arrived"
+
+      - label: "What You Did"
+        name: "what_i_did"
+        widget: "list"
+        label_singular: "Action"
+        field:
+          label: "Action"
+          name: "action"
+          widget: "string"
+        hint: "Add each bullet point as a separate item"
+
+      - label: "Metric 1 — Number"
+        name: "metric1_num"
+        widget: "string"
+        hint: "e.g. 89%"
+
+      - label: "Metric 1 — Label"
+        name: "metric1_label"
+        widget: "string"
+        hint: "e.g. CPA Reduction"
+
+      - label: "Metric 2 — Number"
+        name: "metric2_num"
+        widget: "string"
+
+      - label: "Metric 2 — Label"
+        name: "metric2_label"
+        widget: "string"
+
+      - label: "Metric 3 — Number"
+        name: "metric3_num"
+        widget: "string"
+
+      - label: "Metric 3 — Label"
+        name: "metric3_label"
+        widget: "string"
+
+      - label: "Tags (for filter bar)"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Growth Strategy", value: "growth" }
+          - { label: "Paid Media", value: "paid" }
+          - { label: "Brand & Creative", value: "brand" }
+          - { label: "Team & Ops", value: "team" }
+          - { label: "Revenue Models", value: "revenue" }
+
+      - label: "Card accent colour"
+        name: "accent_color"
+        widget: "select"
+        options:
+          - { label: "Lime Green", value: "#c8ff00" }
+          - { label: "Coral Red", value: "#ff4d2e" }
+          - { label: "Electric Blue", value: "#1a6bff" }
+          - { label: "Violet", value: "#9b5cff" }
+          - { label: "Amber", value: "#ffb800" }
+          - { label: "Teal", value: "#00d4a4" }
+        default: "#c8ff00"
+
+      - label: "Featured? (shows as large card)"
+        name: "featured"
+        widget: "boolean"
+        default: false
+
+      - label: "Order (lower = higher on page)"
+        name: "order"
+        widget: "number"
+        default: 10
+
+  # ─── EXPERIENCE ──────────────────────────────────────────────
+  - name: "experience"
+    label: "Experience / CV"
+    files:
+      - name: "experience"
+        label: "Work Experience"
+        file: "_data/experience.json"
+        fields:
+          - label: "Jobs"
+            name: "jobs"
+            widget: "list"
+            label_singular: "Job"
+            fields:
+              - { label: "Period", name: "period", widget: "string", hint: "e.g. 2022–2025" }
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  # ─── TESTIMONIALS ────────────────────────────────────────────
+  - name: "testimonials"
+    label: "Testimonials"
+    files:
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "_data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            label_singular: "Testimonial"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role & Company", name: "role", widget: "string" }
+              - label: "Accent colour"
+                name: "color"
+                widget: "select"
+                options:
+                  - { label: "Lime", value: "#c8ff00" }
+                  - { label: "Coral", value: "#ff4d2e" }
+                  - { label: "Blue", value: "#1a6bff" }
+                  - { label: "Amber", value: "#ffb800" }
+                  - { label: "Violet", value: "#9b5cff" }
+
+  # ─── CREATIVE ────────────────────────────────────────────────
+  - name: "creative"
+    label: "Creative Work"
+    files:
+      - name: "videos"
+        label: "Videos & Cinematography"
+        file: "_data/videos.json"
+        fields:
+          - label: "Videos"
+            name: "items"
+            widget: "list"
+            label_singular: "Video"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Category", name: "category", widget: "string", hint: "e.g. Showreel · Brand Film" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Source"
+                name: "source"
+                widget: "select"
+                options:
+                  - { label: "YouTube URL", value: "youtube" }
+                  - { label: "Vimeo URL", value: "vimeo" }
+                  - { label: "Direct video file", value: "file" }
+              - { label: "URL or file path", name: "url", widget: "string", hint: "Paste YouTube/Vimeo link, or upload below" }
+              - { label: "Featured? (full width)", name: "featured", widget: "boolean", default: false }
+
+      - name: "designs"
+        label: "Design & Branding"
+        file: "_data/designs.json"
+        fields:
+          - label: "Designs"
+            name: "items"
+            widget: "list"
+            label_singular: "Design"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Category", name: "category", widget: "string", hint: "e.g. Brand Identity" }
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                hint: "Upload your design image"
+              - { label: "Wide card? (spans 2 columns)", name: "wide", widget: "boolean", default: false }
