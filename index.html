@@ -1,11 +1,575 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sameer Saeed — Site Admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sameer Saeed — Growth Systems Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--surface:#111111;--surface2:#181818;--white:#f4f1ec;
+  --muted:rgba(244,241,236,0.52);--faint:rgba(244,241,236,0.07);--faint2:rgba(244,241,236,0.13);
+  --lime:#c8ff00;--coral:#ff4d2e;--blue:#1a6bff;--violet:#9b5cff;--amber:#ffb800;--teal:#00d4a4;
+  --display:'Bebas Neue',sans-serif;--serif:'Playfair Display',serif;--body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:10px;height:10px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .22s,height .22s;mix-blend-mode:difference}
+.cursor.big{width:42px;height:42px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 3rem}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,.97) 0%,transparent 100%);z-index:-1}
+.logo{font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;color:var(--white);text-decoration:none}
+.logo span{color:var(--lime)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--lime)}
+.nav-cta{font-size:.78rem;font-weight:500;padding:.6rem 1.4rem;border:1px solid rgba(244,241,236,.3);border-radius:100px;color:var(--white);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--lime);border-color:var(--lime);color:var(--black)}
+
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(140px);opacity:.25;pointer-events:none}
+.b1{width:650px;height:650px;background:var(--coral);top:-15%;right:-8%;animation:blob 10s ease-in-out infinite alternate}
+.b2{width:500px;height:500px;background:var(--blue);bottom:-5%;left:-10%;animation:blob 13s ease-in-out infinite alternate-reverse}
+.b3{width:280px;height:280px;background:var(--violet);top:40%;left:35%;animation:blob 8s ease-in-out infinite alternate}
+@keyframes blob{to{transform:translate(22px,-18px) scale(1.08)}}
+
+.hero-available{display:inline-flex;align-items:center;gap:.6rem;background:rgba(200,255,0,.09);border:1px solid rgba(200,255,0,.22);border-radius:100px;padding:.38rem 1rem;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--lime);margin-bottom:2rem;width:fit-content}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
+.hero-available.hidden{display:none}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+
+.hero-name{font-family:var(--display);font-size:clamp(5rem,12vw,12rem);line-height:.88;letter-spacing:.01em;position:relative;z-index:1}
+.hero-name em{font-family:var(--serif);font-style:italic;color:var(--lime);font-size:.72em}
+.hero-role{font-family:var(--display);font-size:clamp(1.5rem,3.5vw,3.2rem);letter-spacing:.05em;color:var(--muted);line-height:1;margin-top:.6rem;position:relative;z-index:1}
+.hero-bottom{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:end;margin-top:3.5rem;position:relative;z-index:1}
+.hero-pitch{max-width:520px;font-size:1.08rem;color:rgba(244,241,236,.68);line-height:1.8}
+.hero-pitch strong{color:var(--white);font-weight:500}
+.hero-actions{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:var(--lime);border-radius:4px;font-size:.82rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:opacity .3s,transform .2s;white-space:nowrap}
+.btn-primary:hover{opacity:.85;transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border:1px solid rgba(244,241,236,.2);border-radius:4px;font-size:.82rem;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:all .3s;white-space:nowrap}
+.btn-secondary:hover{border-color:rgba(244,241,236,.5)}
+.hero-stats{display:flex;gap:0;border:1px solid var(--faint);border-radius:4px;overflow:hidden;margin-top:2rem}
+.stat{padding:1.1rem 1.7rem;border-right:1px solid var(--faint);text-align:center}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--display);font-size:2rem;color:var(--white);display:block;line-height:1}
+.stat-l{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+
+.marquee-strip{overflow:hidden;background:var(--lime);padding:.8rem 0}
+.marquee-inner{display:flex;width:max-content;animation:marquee 24s linear infinite}
+.marquee-inner span{font-family:var(--display);font-size:.95rem;letter-spacing:.06em;color:var(--black);padding:0 1.8rem;white-space:nowrap}
+.msep{color:var(--coral)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+section{padding:7rem 3rem}
+.stag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,236,.32);display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem}
+.stag::before{content:'';width:34px;height:1px;background:var(--coral);flex-shrink:0}
+.sec-hed{font-family:var(--display);font-size:clamp(2.8rem,5.5vw,5.2rem);line-height:.92;margin-bottom:1rem}
+.sec-hed em{font-family:var(--serif);font-style:italic}
+
+#work{background:var(--black)}
+.work-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.work-note{max-width:300px;font-size:.85rem;color:var(--muted);line-height:1.7;text-align:right}
+
+.cs-featured{display:grid;grid-template-columns:1fr 1.4fr;border:1px solid var(--faint);border-radius:6px;overflow:hidden;margin-bottom:1.5rem;transition:border-color .4s}
+.cs-featured:hover{border-color:var(--faint2)}
+.cs-visual{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#050e00,#0d2200,#162e00)}
+.cs-body{padding:3rem;display:flex;flex-direction:column;justify-content:space-between;background:var(--surface)}
+.cs-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.cs-badge{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;padding:.3rem .85rem;border-radius:100px;border:1px solid rgba(244,241,236,.14);color:var(--muted)}
+.cs-yr{font-size:.62rem;letter-spacing:.12em;color:var(--muted)}
+.cs-co{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.cs-hed{font-family:var(--display);font-size:2.2rem;letter-spacing:.02em;line-height:.95;margin-bottom:1.1rem}
+.cs-blurb{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid var(--faint)}
+.cs-results{display:flex;flex-direction:column;gap:.65rem;margin-bottom:2rem}
+.cs-result{display:flex;align-items:flex-start;gap:.85rem}
+.cs-dot{width:5px;height:5px;border-radius:50%;margin-top:.55rem;flex-shrink:0}
+.cs-num{font-family:var(--display);font-size:1.45rem;line-height:1;min-width:68px;flex-shrink:0}
+.cs-label{font-size:.78rem;color:var(--muted);line-height:1.45}
+.cs-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(200,255,0,.28);padding-bottom:2px;width:fit-content;transition:opacity .3s}
+.cs-cta:hover{opacity:.6}
+
+.cs-grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.cs-card{border:1px solid var(--faint);border-radius:6px;overflow:hidden;transition:border-color .35s,transform .35s}
+.cs-card:hover{border-color:var(--faint2);transform:translateY(-3px)}
+.cs-card.hidden{display:none}
+.cs-card-vis{height:160px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cs-card-body{padding:1.7rem;background:var(--surface)}
+.cs-card-co{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.cs-card-title{font-family:var(--display);font-size:1.45rem;letter-spacing:.02em;margin-bottom:.7rem;line-height:.95}
+.cs-card-blurb{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.cs-card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.cs-tag{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;border:1px solid var(--faint);color:rgba(244,241,236,.35)}
+.cs-card-result{display:flex;align-items:center;gap:.7rem;padding-top:.9rem;border-top:1px solid var(--faint)}
+.cs-card-num{font-family:var(--display);font-size:1.55rem;line-height:1}
+.cs-card-rl{font-size:.73rem;color:var(--muted);line-height:1.35}
+
+.show-more-wrap{text-align:center;margin-top:2.5rem}
+.show-more-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;border:1px solid rgba(244,241,236,.18);border-radius:4px;font-family:var(--body);font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:transparent;cursor:pointer;transition:all .3s}
+.show-more-btn:hover{border-color:var(--lime);color:var(--lime)}
+
+#about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:start}
+.about-left .sec-hed em{color:var(--coral)}
+.about-body{font-size:.93rem;color:var(--muted);line-height:1.85;margin-bottom:.9rem}
+.about-body strong{color:var(--white);font-weight:500}
+.about-tag-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.8rem}
+.a-tag{padding:.35rem .9rem;border:1px solid rgba(244,241,236,.12);border-radius:100px;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,236,.5)}
+
+.exp-list{display:flex;flex-direction:column}
+.exp-item{padding:1.5rem 0;border-bottom:1px solid var(--faint);display:grid;grid-template-columns:90px 1fr;gap:1.5rem;align-items:start}
+.exp-period{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:.25rem;line-height:1.5}
+.exp-co{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:.2rem}
+.exp-title{font-family:var(--display);font-size:1.25rem;letter-spacing:.02em;margin-bottom:.3rem}
+.exp-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
+.cv-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.2rem;padding:.8rem 1.6rem;background:var(--lime);border-radius:4px;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:opacity .3s}
+.cv-btn:hover{opacity:.82}
+
+#skills{background:var(--black);padding:5.5rem 3rem}
+.skills-inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 5rem;margin-top:3rem}
+.bar-item+.bar-item{margin-top:1.8rem}
+.bar-lr{display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem}
+.bar-lbl{font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bar-pct{font-family:var(--display);font-size:1rem;color:var(--white)}
+.bar-track{height:2px;background:var(--faint);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.3s cubic-bezier(.4,0,.2,1)}
+
+#testimonials{background:var(--surface)}
+.t-header{margin-bottom:4rem}
+.t-header .sec-hed em{color:var(--blue)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.t-card{padding:2rem;border:1px solid var(--faint);border-radius:6px;transition:border-color .3s;display:flex;flex-direction:column}
+.t-card:hover{border-color:var(--faint2)}
+.t-mark{font-size:2.2rem;line-height:1;margin-bottom:.9rem;display:block}
+.t-quote{font-family:var(--serif);font-style:italic;font-size:.93rem;line-height:1.75;color:rgba(244,241,236,.82);margin-bottom:1.5rem;flex:1}
+.t-line{width:28px;height:1px;background:var(--faint);margin-bottom:1.5rem}
+.t-person{display:flex;align-items:center;gap:.85rem}
+.t-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:500;flex-shrink:0}
+.t-name{font-size:.8rem;font-weight:500;display:block}
+.t-role{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+#contact{background:var(--black);position:relative;overflow:hidden}
+.contact-ghost{position:absolute;bottom:-4rem;left:-1rem;font-family:var(--display);font-size:18vw;line-height:1;color:rgba(244,241,236,.018);pointer-events:none;white-space:nowrap}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;position:relative;z-index:1}
+.contact-left .sec-hed em{color:var(--lime)}
+.contact-desc{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:2.2rem;max-width:380px}
+.c-links{display:flex;flex-direction:column;gap:.65rem}
+.c-link{display:flex;align-items:center;gap:.8rem;font-size:.83rem;color:var(--muted);text-decoration:none;transition:color .3s}
+.c-link:hover{color:var(--lime)}
+.c-icon{width:32px;height:32px;border-radius:50%;border:1px solid var(--faint);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.flbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.35rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.fgrp{display:flex;flex-direction:column;margin-bottom:.9rem}
+.fgrp.half{margin-bottom:0}
+input,select,textarea{background:rgba(244,241,236,.04);border:1px solid rgba(244,241,236,.1);border-radius:4px;padding:.78rem 1rem;color:var(--white);font-family:var(--body);font-size:.86rem;width:100%;outline:none;transition:border-color .3s;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--lime)}
+select option{background:#1a1a1a}
+textarea{resize:none;height:110px;line-height:1.6}
+.sub-btn{width:100%;padding:1rem;background:var(--lime);border:none;border-radius:4px;font-family:var(--body);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--black);cursor:pointer;margin-top:.4rem;transition:opacity .3s}
+.sub-btn:hover{opacity:.85}
+
+footer{border-top:1px solid var(--faint);padding:2.2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.foot-logo{font-family:var(--display);font-size:1.2rem;letter-spacing:.04em}
+.foot-logo span{color:var(--lime)}
+.foot-copy{font-size:.66rem;color:rgba(244,241,236,.2);letter-spacing:.06em}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,236,.25);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:var(--lime)}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* Loading state */
+.loading{opacity:0;transition:opacity .5s}
+.loading.ready{opacity:1}
+</style>
 </head>
-<body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<body class="loading" id="body">
+
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="#" class="logo">SAMEER<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="creative.html">Creative</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire me →</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="hero-blob b3"></div>
+  <div class="hero-available" id="hero-available"><div class="avail-dot"></div>Open to new roles</div>
+  <h1 class="hero-name" id="hero-name">SAMEER<br><em>Saeed</em></h1>
+  <p class="hero-role" id="hero-role">HEAD OF SOCIAL & DIGITAL · GROWTH SYSTEMS LEADER</p>
+  <div class="hero-bottom">
+    <div>
+      <p class="hero-pitch" id="hero-pitch">I build growth systems that compound, not campaigns that spend.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n" id="stat1-num">15+</span><span class="stat-l" id="stat1-label">Years Experience</span></div>
+        <div class="stat"><span class="stat-n" id="stat2-num">89%</span><span class="stat-l" id="stat2-label">CPA Reduction</span></div>
+        <div class="stat"><span class="stat-n" id="stat3-num">£16M</span><span class="stat-l" id="stat3-label">Revenue Built</span></div>
+        <div class="stat"><span class="stat-n" id="stat4-num">22</span><span class="stat-l" id="stat4-label">Team Led</span></div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See Case Studies ↓</a>
+      <a href="#contact" class="btn-secondary">Download CV →</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Growth Strategy</span><span class="msep">✦</span><span>Paid Acquisition</span><span class="msep">✦</span><span>Product-Led Growth</span><span class="msep">✦</span><span>Brand & Creative</span><span class="msep">✦</span><span>Social & Digital</span><span class="msep">✦</span><span>Team Leadership</span><span class="msep">✦</span><span>Commercial Strategy</span><span class="msep">✦</span>
+    <span>Growth Strategy</span><span class="msep">✦</span><span>Paid Acquisition</span><span class="msep">✦</span><span>Product-Led Growth</span><span class="msep">✦</span><span>Brand & Creative</span><span class="msep">✦</span><span>Social & Digital</span><span class="msep">✦</span><span>Team Leadership</span><span class="msep">✦</span><span>Commercial Strategy</span><span class="msep">✦</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="work-top reveal">
+    <div>
+      <p class="stag">(01) Selected Case Studies</p>
+      <h2 class="sec-hed">SYSTEMS,<br><em>not campaigns.</em></h2>
+    </div>
+    <p class="work-note">Real numbers. Real companies. Real outcomes.</p>
+  </div>
+
+  <div class="cs-featured reveal">
+    <div class="cs-visual" style="background:linear-gradient(135deg,#050e00,#0d2200,#162e00)">
+      <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:.05" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="pg" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0L0 0 0 50" fill="none" stroke="#fff" stroke-width=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#pg)"/></svg>
+      <div style="text-align:center;position:relative;z-index:1;padding:2.5rem">
+        <div style="font-family:var(--display);font-size:5.5rem;letter-spacing:.02em;line-height:1;color:var(--lime);margin-bottom:.5rem">OLIO</div>
+        <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,255,0,.45);margin-bottom:2.5rem">Consumer Marketplace · Product-Led Growth</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;text-align:left">
+          <div style="padding:1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px"><div style="font-family:var(--display);font-size:2.5rem;color:var(--lime);line-height:1">89%</div><div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,255,0,.45);margin-top:.3rem">CPA Reduction</div></div>
+          <div style="padding:1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px"><div style="font-family:var(--display);font-size:2.5rem;color:var(--lime);line-height:1">79%</div><div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,255,0,.45);margin-top:.3rem">Volume Increase</div></div>
+          <div style="padding:1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px"><div style="font-family:var(--display);font-size:2.5rem;color:var(--lime);line-height:1">3×</div><div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,255,0,.45);margin-top:.3rem">LTV Growth</div></div>
+          <div style="padding:1rem;border:1px solid rgba(200,255,0,.12);border-radius:4px"><div style="font-family:var(--display);font-size:2.5rem;color:var(--lime);line-height:1">35→8%</div><div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,255,0,.45);margin-top:.3rem">30-day Churn</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div>
+        <div class="cs-meta"><span class="cs-badge">VP Growth · 22-Person Team</span><span class="cs-yr">Olio</span></div>
+        <p class="cs-co">Olio · Consumer Marketplace</p>
+        <h3 class="cs-hed">FROM PAID-LED TO PRODUCT-LED — AND THE NUMBERS PROVED IT</h3>
+        <p class="cs-blurb">The business was hooked on paid acquisition. CPA was climbing, churn was 35% at 30 days, and LTV was shrinking. I led the full shift from paid-led to product-led growth across a 22-person function.</p>
+        <div class="cs-results">
+          <div class="cs-result"><div class="cs-dot" style="background:var(--lime)"></div><span class="cs-num" style="color:var(--lime)">89%</span><span class="cs-label">CPA reduction — paid acquisition cost fell by nearly nine-tenths</span></div>
+          <div class="cs-result"><div class="cs-dot" style="background:var(--teal)"></div><span class="cs-num" style="color:var(--teal)">79%</span><span class="cs-label">Acquisition volume increase — more users, far less spend</span></div>
+          <div class="cs-result"><div class="cs-dot" style="background:var(--amber)"></div><span class="cs-num" style="color:var(--amber)">3×</span><span class="cs-label">LTV growth as retention rebuilt from churn-heavy to sticky</span></div>
+        </div>
+      </div>
+      <a href="case-studies.html" class="cs-cta">View All Case Studies →</a>
+    </div>
+  </div>
+
+  <div class="cs-grid-4" id="cs-grid">
+    <div class="cs-card reveal d1">
+      <div class="cs-card-vis" style="background:linear-gradient(135deg,#00101a,#001e30)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-size:2.2rem;color:var(--blue)">OCL VISION</div><div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,107,255,.45);margin-top:.5rem">Healthcare · Fractional CMO</div></div>
+      </div>
+      <div class="cs-card-body">
+        <p class="cs-card-co">OCL Vision · Eye Surgery</p>
+        <h3 class="cs-card-title">£431K WASTED SPEND IDENTIFIED</h3>
+        <p class="cs-card-blurb">Rebuilt the acquisition model, ran a 13-agency RFP saving ~£200k annually, and secured board approval for FY26 growth strategy.</p>
+        <div class="cs-card-tags"><span class="cs-tag">Growth Strategy</span><span class="cs-tag">Paid Media</span></div>
+        <div class="cs-card-result"><span class="cs-card-num" style="color:var(--blue)">~£200K</span><span class="cs-card-rl">Annual agency cost saved</span></div>
+      </div>
+    </div>
+    <div class="cs-card reveal d2">
+      <div class="cs-card-vis" style="background:linear-gradient(135deg,#1a0800,#301200)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-size:2.2rem;color:var(--amber)">THE GUARDIAN</div><div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,184,0,.45);margin-top:.5rem">Media · Reader Revenue</div></div>
+      </div>
+      <div class="cs-card-body">
+        <p class="cs-card-co">The Guardian · News Media</p>
+        <h3 class="cs-card-title">£16M FROM ZERO IN YEAR ONE</h3>
+        <p class="cs-card-blurb">Built the Contributions revenue model from scratch, contributing to a strategy that moved the business from a £57m loss toward break-even.</p>
+        <div class="cs-card-tags"><span class="cs-tag">Revenue Model</span><span class="cs-tag">Growth</span></div>
+        <div class="cs-card-result"><span class="cs-card-num" style="color:var(--amber)">£16M</span><span class="cs-card-rl">Year one revenue from new stream</span></div>
+      </div>
+    </div>
+    <div class="cs-card hidden reveal d1" id="extra-1">
+      <div class="cs-card-vis" style="background:linear-gradient(135deg,#0d001a,#1a0035)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-size:2.2rem;color:var(--violet)">ELDER</div><div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(155,92,255,.45);margin-top:.5rem">Healthcare · Premium Care</div></div>
+      </div>
+      <div class="cs-card-body">
+        <p class="cs-card-co">Elder · Premium Care</p>
+        <h3 class="cs-card-title">HIGH-CONSIDERATION GROWTH STRATEGY</h3>
+        <p class="cs-card-blurb">Built full-funnel growth for a premium care marketplace where standard paid acquisition models fail.</p>
+        <div class="cs-card-tags"><span class="cs-tag">Full-Funnel</span><span class="cs-tag">Retention</span></div>
+        <div class="cs-card-result"><span class="cs-card-num" style="color:var(--violet)">↑ LTV</span><span class="cs-card-rl">Sustainable retention-driven growth</span></div>
+      </div>
+    </div>
+    <div class="cs-card hidden reveal d2" id="extra-2">
+      <div class="cs-card-vis" style="background:linear-gradient(135deg,#001a14,#003024)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-size:2.2rem;color:var(--teal)">B2B REFERRAL</div><div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,212,164,.45);margin-top:.5rem">OCL Vision · Channel</div></div>
+      </div>
+      <div class="cs-card-body">
+        <p class="cs-card-co">OCL Vision · B2B Growth</p>
+        <h3 class="cs-card-title">77% CONVERSION CHANNEL BUILT</h3>
+        <p class="cs-card-blurb">Identified B2B professional referrals as highest-converting channel and launched structured programme from scratch.</p>
+        <div class="cs-card-tags"><span class="cs-tag">B2B</span><span class="cs-tag">Channel Strategy</span></div>
+        <div class="cs-card-result"><span class="cs-card-num" style="color:var(--teal)">77%</span><span class="cs-card-rl">Conversion rate on B2B referrals</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="show-more-wrap" id="show-more-wrap">
+    <button class="show-more-btn" onclick="expandCases()">Load More Case Studies ↓</button>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="stag">(02) About</p>
+      <h2 class="sec-hed">GROWTH AS A<br>SYSTEM, <em>not<br>a channel.</em></h2>
+      <p class="about-body" id="about-body1">Loading...</p>
+      <p class="about-body" id="about-body2"></p>
+      <p class="about-body" id="about-body3"></p>
+      <div class="about-tag-row">
+        <span class="a-tag">Consumer Marketplaces</span>
+        <span class="a-tag">Healthcare</span>
+        <span class="a-tag">Media & Publishing</span>
+        <span class="a-tag">Product-Led Growth</span>
+        <span class="a-tag">Fractional Leadership</span>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <div class="exp-list" id="exp-list">
+        <div class="exp-item">
+          <span class="exp-period">Loading...</span>
+          <div><p class="exp-co">—</p><p class="exp-title">—</p></div>
+        </div>
+      </div>
+      <a href="#contact" class="cv-btn">Download Full CV ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="reveal">
+    <p class="stag">(03) Expertise</p>
+    <h2 class="sec-hed" style="font-size:clamp(2.2rem,4vw,3.8rem)">WHERE I'M<br><em>strongest.</em></h2>
+  </div>
+  <div class="skills-inner reveal d1">
+    <div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Growth Strategy & Systems</span><span class="bar-pct">97%</span></div><div class="bar-track"><div class="bar-fill" style="width:97%;background:var(--lime)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Paid Acquisition</span><span class="bar-pct">92%</span></div><div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--coral)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Commercial & Revenue Modelling</span><span class="bar-pct">90%</span></div><div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--blue)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Team Building & Leadership</span><span class="bar-pct">95%</span></div><div class="bar-track"><div class="bar-fill" style="width:95%;background:var(--violet)"></div></div></div>
+    </div>
+    <div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Product-Led Growth</span><span class="bar-pct">88%</span></div><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--teal)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Retention & CRM Strategy</span><span class="bar-pct">87%</span></div><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--amber)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Brand & Creative Direction</span><span class="bar-pct">85%</span></div><div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--lime)"></div></div></div>
+      <div class="bar-item"><div class="bar-lr"><span class="bar-lbl">Data, Experimentation & KPIs</span><span class="bar-pct">90%</span></div><div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--coral)"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="t-header reveal">
+    <p class="stag">(04) Recommendations</p>
+    <h2 class="sec-hed">WHAT <em>people<br>I've worked with</em> SAY.</h2>
+  </div>
+  <div class="t-grid" id="t-grid">
+    <div class="t-card reveal d1">
+      <span class="t-mark" style="color:var(--lime)">"</span>
+      <p class="t-quote">Loading testimonials...</p>
+      <div class="t-line"></div>
+      <div class="t-person"><div class="t-av" style="background:rgba(200,255,0,.1);color:var(--lime)">—</div><div><span class="t-name">—</span><span class="t-role">—</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-ghost" aria-hidden="true">LET'S GO</div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="stag">(05) Get In Touch</p>
+      <h2 class="sec-hed">LET'S BUILD<br>SOMETHING <em>that<br>compounds.</em></h2>
+      <p class="contact-desc" id="contact-desc">Open to Head of Growth, VP Growth, CMO and fractional leadership roles.</p>
+      <div class="c-links">
+        <a href="#" class="c-link" id="contact-email-link"><span class="c-icon">✉</span><span id="contact-email-text">sameer@youremail.com</span></a>
+        <a href="#" class="c-link" id="linkedin-link" target="_blank"><span class="c-icon">in</span>LinkedIn</a>
+        <a href="#" class="c-link" id="instagram-link" target="_blank"><span class="c-icon">ig</span>Instagram</a>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <div class="frow">
+        <div class="fgrp half"><label class="flbl">Your Name *</label><input type="text" placeholder="Your name"></div>
+        <div class="fgrp half"><label class="flbl">Email *</label><input type="email" placeholder="you@company.com"></div>
+      </div>
+      <div class="frow">
+        <div class="fgrp half"><label class="flbl">Company</label><input type="text" placeholder="Company"></div>
+        <div class="fgrp half"><label class="flbl">Role Type</label>
+          <select><option value="">Select...</option><option>Head of Growth / Digital</option><option>VP Growth</option><option>CMO</option><option>Fractional / Contract</option><option>Advisory</option><option>Other</option></select>
+        </div>
+      </div>
+      <div class="fgrp"><label class="flbl">Message *</label><textarea placeholder="Tell me about the role and what you're trying to solve."></textarea></div>
+      <button class="sub-btn" onclick="this.textContent='Sent ✓';this.style.background='#a8d800';setTimeout(()=>{this.textContent='Send Message →';this.style.background='var(--lime)'},3500)">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">SAMEER<span>.</span></div>
+  <span class="foot-copy">© 2025 Sameer Saeed — Open to opportunities</span>
+  <div class="foot-links"><a href="#">LinkedIn</a><a href="#">Email</a><a href="#">CV</a></div>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+document.querySelectorAll('a,button,.cs-card,.cs-featured,.t-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Skills bars
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.querySelectorAll('.bar-fill').forEach(b => b.style.transform='scaleX(1)'); });
+}, { threshold: 0.3 });
+const sk = document.querySelector('#skills');
+if(sk) barObs.observe(sk);
+
+// Show more
+let expanded = false;
+function expandCases() {
+  if(!expanded) {
+    ['extra-1','extra-2'].forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.remove('hidden');
+      setTimeout(() => el.classList.add('on'), 50);
+    });
+    document.getElementById('show-more-wrap').style.display = 'none';
+    expanded = true;
+  }
+}
+
+// Load CMS data from JSON files
+async function loadData() {
+  try {
+    // Load homepage data
+    const hpRes = await fetch('/homepage.json');
+    if(hpRes.ok) {
+      const hp = await hpRes.json();
+
+      // Available badge
+      const avail = document.getElementById('hero-available');
+      if(hp.available === false) avail.classList.add('hidden');
+
+      // Hero
+      if(hp.hero_name) {
+        const nameParts = hp.hero_name.split(' ');
+        const first = nameParts[0];
+        const rest = nameParts.slice(1).join(' ');
+        document.getElementById('hero-name').innerHTML = first + (rest ? '<br><em>' + rest + '</em>' : '');
+      }
+      if(hp.hero_role) document.getElementById('hero-role').textContent = hp.hero_role;
+      if(hp.hero_pitch) document.getElementById('hero-pitch').textContent = hp.hero_pitch;
+
+      // Stats
+      if(hp.stat1_num) document.getElementById('stat1-num').textContent = hp.stat1_num;
+      if(hp.stat1_label) document.getElementById('stat1-label').textContent = hp.stat1_label;
+      if(hp.stat2_num) document.getElementById('stat2-num').textContent = hp.stat2_num;
+      if(hp.stat2_label) document.getElementById('stat2-label').textContent = hp.stat2_label;
+      if(hp.stat3_num) document.getElementById('stat3-num').textContent = hp.stat3_num;
+      if(hp.stat3_label) document.getElementById('stat3-label').textContent = hp.stat3_label;
+      if(hp.stat4_num) document.getElementById('stat4-num').textContent = hp.stat4_num;
+      if(hp.stat4_label) document.getElementById('stat4-label').textContent = hp.stat4_label;
+
+      // About
+      if(hp.about_body1) document.getElementById('about-body1').textContent = hp.about_body1;
+      if(hp.about_body2) document.getElementById('about-body2').textContent = hp.about_body2;
+      if(hp.about_body3) document.getElementById('about-body3').textContent = hp.about_body3;
+
+      // Contact
+      if(hp.contact_email) {
+        document.getElementById('contact-email-text').textContent = hp.contact_email;
+        document.getElementById('contact-email-link').href = 'mailto:' + hp.contact_email;
+      }
+      if(hp.linkedin_url) document.getElementById('linkedin-link').href = hp.linkedin_url;
+      if(hp.instagram_url) document.getElementById('instagram-link').href = hp.instagram_url;
+      if(hp.contact_roles) document.getElementById('contact-desc').textContent = hp.contact_roles;
+    }
+
+    // Load experience data
+    const expRes = await fetch('/experience.json');
+    if(expRes.ok) {
+      const exp = await expRes.json();
+      if(exp.jobs && exp.jobs.length > 0) {
+        const list = document.getElementById('exp-list');
+        list.innerHTML = exp.jobs.map(job => `
+          <div class="exp-item">
+            <span class="exp-period">${job.period || ''}</span>
+            <div>
+              <p class="exp-co">${job.company || ''}</p>
+              <p class="exp-title">${job.title || ''}</p>
+              <p class="exp-desc">${job.description || ''}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Load testimonials
+    const tRes = await fetch('/testimonials.json');
+    if(tRes.ok) {
+      const tData = await tRes.json();
+      if(tData.items && tData.items.length > 0) {
+        const colors = ['var(--lime)','var(--amber)','var(--coral)','var(--blue)','var(--violet)'];
+        const bgcolors = ['rgba(200,255,0,.1)','rgba(255,184,0,.1)','rgba(255,77,46,.1)','rgba(26,107,255,.1)','rgba(155,92,255,.1)'];
+        const grid = document.getElementById('t-grid');
+        grid.innerHTML = tData.items.map((t, i) => {
+          const c = t.color || colors[i % colors.length];
+          const bg = bgcolors[i % bgcolors.length];
+          const initials = t.name ? t.name.split(' ').map(n=>n[0]).join('').substring(0,2) : '—';
+          return `
+          <div class="t-card reveal d${(i%3)+1}">
+            <span class="t-mark" style="color:${c}">"</span>
+            <p class="t-quote">${t.quote || ''}</p>
+            <div class="t-line"></div>
+            <div class="t-person">
+              <div class="t-av" style="background:${bg};color:${c}">${initials}</div>
+              <div><span class="t-name">${t.name || ''}</span><span class="t-role">${t.role || ''}</span></div>
+            </div>
+          </div>`;
+        }).join('');
+        // Re-observe new cards
+        grid.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      }
+    }
+
+  } catch(e) {
+    console.log('Data load error:', e);
+  }
+
+  // Show page
+  document.getElementById('body').classList.add('ready');
+}
+
+loadData();
+</script>
 </body>
 </html>
